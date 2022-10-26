@@ -1,32 +1,41 @@
 package DesignPattern.Composite;
 
+import java.util.ArrayList;
+import java.util.List;
 
 class CompositeGift extends GiftBase{
     private String name;
     private double price;
+    private List<GiftBase> childGift;
 
-    @Override
-    public void addChildGift(GiftBase gift) {
-        // TODO Auto-generated method stub
-        super.addChildGift(gift);
+    public CompositeGift(String name, double price) {
+        this.name = name;
+        this.price = price;
+        this.childGift = new ArrayList();
     }
 
     @Override
-    public void getChildren(GiftBase gift) {
-        // TODO Auto-generated method stub
-        super.getChildren(gift);
+    public void addChildGift(GiftBase gift) {
+        childGift.add(gift);
+    }
+
+    @Override
+    public List<GiftBase> getChildren(GiftBase gift) {
+        return this.childGift;
     }
 
     @Override
     public void removeChildGift(GiftBase gift) {
-        // TODO Auto-generated method stub
-        super.removeChildGift(gift);
+        childGift.remove(gift);
     }
 
     @Override
-    public int CalculateTotalPrice() {
-        
-        return 0;
+    public double CalculateTotalPrice() {
+        Double total = this.price;
+        for(GiftBase gift: childGift){
+            total += gift.CalculateTotalPrice();
+        }
+        return total;
     }
 
     @Override

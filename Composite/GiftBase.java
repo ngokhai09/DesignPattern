@@ -1,5 +1,7 @@
 package DesignPattern.Composite;
 
+import java.util.List;
+
 public abstract class GiftBase {
     public abstract String getName();
     public abstract double getPrice();
@@ -11,9 +13,9 @@ public abstract class GiftBase {
     public void removeChildGift(GiftBase gift) {
         throw new UnsupportedOperationException("Current operation is not support for this object");
     }
-    public void getChildren(GiftBase gift) {
+    public List<GiftBase> getChildren(GiftBase gift) {
         throw new UnsupportedOperationException("Current operation is not support for this object");
     }
 
-    public abstract int CalculateTotalPrice();
+    public abstract double CalculateTotalPrice();
 }
