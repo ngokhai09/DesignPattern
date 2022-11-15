@@ -1,7 +1,7 @@
 package DesignPattern.Adapter;
 
 class RunAdapter{
-    public static void main() {
+    public static void main(String [] args) {
         User user = new UserImpl("John Smith");
         Customer customer = new UserToCustomer(user);
         testAdapter(customer);
